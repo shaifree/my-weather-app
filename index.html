@@ -11,22 +11,22 @@
       integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="src/style.css" />
     <script
       src="https://kit.fontawesome.com/ecbad2ce05.js"
       crossorigin="anonymous"
     ></script>
     <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
-    <link rel="stylesheet" href="src/style.css" />
   </head>
   <body>
     <div class="container">
-      <div class="weather-app shadow">
+      <div class="weather-app shadow" id="background">
         <form class="input-group mb-3" id="search-form">
           <input
             type="text"
             class="form-control search-bar"
             id="city-input"
-            placeholder="Search city"
+            placeholder="Enter a city"
             aria-label="Recipient's username"
             aria-describedby="button-addon2"
             autocomplete="off"
@@ -49,27 +49,39 @@
         </form>
         <div class="row">
           <div class="col-4">
-            <!-- <i class="fa-solid fa-sun weather-large"></i> -->
+            <img
+              src="https://ssl.gstatic.com/onebox/weather/64/sunny.png"
+              alt="sunny"
+              id="large-icon"
+              class="weather-large"
+            />
           </div>
+          <!-- <i class="fa-solid fa-sun weather-large"></i> -->
           <div class="col-8">
             <div class="current-weather">
               <h1 id="current-city"></h1>
               <div class="temperature-degrees">
                 <span class="current-temp" id="temperature"></span>
-                <a href="#" id="fahrenheit" class="fahrenheit-link">°F </a>
-                <!-- <span class="divider"> | </span
-                ><a href="#" id="celcius">°C </a> -->
+                <a href="#" id="fahrenheit-link" class="active fahrenheit-link"
+                  >°F
+                </a>
+                <span class="divider"> | </span
+                ><a href="#" id="celcius-link" class="celcius-link">°C </a>
               </div>
               <h3 id="day-and-time">Sunday 12:54P</h3>
               <p>
-                <span id="weather-discription"></span><br />
+                <span
+                  id="weather-description"
+                  class="weather-description"
+                ></span
+                ><br />
                 Humidity:<span id="humidity"> </span>%<br />
                 Wind:<span id="wind"> </span> mph
               </p>
             </div>
           </div>
         </div>
-        <div class="row text-center future-forecast">
+        <!-- <div class="row text-center future-forecast">
           <div class="col">
             <p class="days">Monday</p>
             <i class="fa-solid fa-cloud-sun-rain small-weather-icon"></i>
@@ -95,16 +107,16 @@
             <i class="fa-solid fa-cloud-sun small-weather-icon"></i>
             <p class="degrees"><strong>71</strong>|62</p>
           </div>
-        </div>
+        </div> -->
       </div>
-      <footer>
+      <small>
         <a
           href="https://github.com/shaifree/my-weather-app"
           target="blank"
           class="github-link"
-          >Open source code</a
+          >Open-source code</a
         >, by Shaina Freeman
-      </footer>
+      </small>
     </div>
     <script src="src/index.js"></script>
   </body>
