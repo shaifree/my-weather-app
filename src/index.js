@@ -149,36 +149,10 @@ function getCurrentLocation(event) {
   navigator.geolocation.getCurrentPosition(searchLocation);
 }
 
-function displayCelsiusTemperature(event) {
-  event.preventDefault();
-  let temperatureElement = document.querySelector("#temperature");
-  fahrenheitLink.classList.remove("active");
-  celciusLink.classList.add("active");
-
-  let celciusTemperature = Math.round(((80 - 32) * 5) / 9);
-  temperatureElement.innerHTML = celciusTemperature;
-}
-
-function displayFahrenheitTemperature(event) {
-  event.preventDefault();
-  fahrenheitLink.classList.add("active");
-  celciusLink.classList.remove("active");
-  let temperatureElement = document.querySelector("#temperature");
-  temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
-}
-
-let fahrenheitTemperature = null;
-
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", submitCity);
 
 let currentLocationButton = document.querySelector("#button-addon3");
 currentLocationButton.addEventListener("click", getCurrentLocation);
-
-let celciusLink = document.querySelector("#celcius-link");
-celciusLink.addEventListener("click", displayCelsiusTemperature);
-
-let fahrenheitLink = document.querySelector("#fahrenheit-link");
-fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
 
 searchCity("Miami");
