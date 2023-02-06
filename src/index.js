@@ -1,4 +1,3 @@
-// Feature 1
 function formatDate(date) {
   let days = [
     "Sunday",
@@ -25,13 +24,52 @@ function formatDate(date) {
   return `${day} ${time}`;
 }
 
+function formatDay (timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+
+  return days[day]; 
+}
+
 let dateAndTime = document.querySelector("#day-and-time");
 let now = new Date();
 
 dateAndTime.innerHTML = formatDate(now);
 
+function displayForecast(response) {
+  let forecast = response.data.daily;
+
+  let forecastElement = document.querySelector("#future-forecast");
+
+  let forecastHTML = `<div class=row>`;
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 7 && index > 0)
+    forecastHTML =
+      forecastHTML +
+      ` <div class="col-2">
+            <p class="days">${formatDay(forecastDay.time)}</p>
+             <img
+              src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${forecastDay.condition.icon}.png"
+              alt="sunny"
+              class="forecast-img"
+            />
+            <p class="degrees"><strong>${Math.round(forecastDay.temperature.maximum)}</strong>|${Math.round(forecastDay.temperature.minimum)}</</p>
+          </div>`;
+  });
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
+function getForecast(coordinates) {
+  console.log(coordinates);
+  let apiKey = "357fa6804fb66f49to1c2af78b9974ad";
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lon=${coordinates.longitude}&lat=${coordinates.latitude}&key=${apiKey}&units=imperial`;
+  console.log(apiUrl);
+  axios.get(apiUrl).then(displayForecast);
+}
+
 function getCurrentWeather(response) {
-  console.log(response)
   let iconElement = document.querySelector("#large-icon");
   let temperatureElement = document.querySelector("#temperature");
   let cityElement = document.querySelector("#current-city");
@@ -53,6 +91,8 @@ function getCurrentWeather(response) {
     "src",
     `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`
   );
+
+  // Clean this up below with a new function
 
   if (weatherIcon === "clear-sky-day") {
     document.getElementById("background").style.background =
@@ -79,8 +119,9 @@ function getCurrentWeather(response) {
     document.getElementById("background").style.background =
       "radial-gradient(circle at -4% -12.9%, rgb(74, 98, 110) 0.3%, rgb(30, 33, 48) 90.2%)";
   }
-}
 
+  getForecast(response.data.coordinates);
+}
 
 function searchCity(query) {
   let apiKey = "357fa6804fb66f49to1c2af78b9974ad";
