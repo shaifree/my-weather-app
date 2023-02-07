@@ -24,7 +24,7 @@ p {
 }
 
 strong {
-  font-size: 22px;
+  font-size: 18px;
   color: white;
 }
 
@@ -139,22 +139,25 @@ strong {
 
 .future-forecast {
   margin-top: 20px;
+  margin-left: 5px;
 }
 
 .forecast-img {
-  width: 75px;
-  height: 75px;
+  width: 60px;
+  height: 60px;
   margin-top: -9px;
   margin-bottom: -6px;
 }
 
 .days {
-  margin: 5px 0px 0px 0px;
+  margin: 5px 0px 3px 0px;
+  font-size: 14px;
 }
 
 .degrees {
   font-weight: 200;
-  font-size: 16px;
+  font-size: 12px;
+  margin-top: 4px;
 }
 
 .divider {
