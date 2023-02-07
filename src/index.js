@@ -98,7 +98,7 @@ function getCurrentWeather(response) {
       "radial-gradient(circle at -2.2% -3.8%, rgba(255, 227, 2, 0.41) 0%, rgb(59, 188, 241) 100.2%)";
   } else if (weatherIcon === "few-clouds-day") {
     document.getElementById("background").style.background =
-      "linear-gradient(to top, #fff1eb 0%, #ace0f9 100%)";
+      "linear-gradient(to bottom, #fff1eb 0%, #ace0f9 100%)";
   } else if (weatherIcon === "rain-day" || weatherIcon === "shower-rain-day") {
     document.getElementById("background").style.background =
       "linear-gradient(45deg, #93a5cf 0%, #e4efe9 100%)";
