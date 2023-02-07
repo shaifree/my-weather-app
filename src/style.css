@@ -75,7 +75,7 @@ strong {
 .weather-large {
   width: 150px;
   height: 150px;
-  margin: -3px 0px 0px 0px;
+  margin: 4px 0px 0px 0px;
 }
 
 .current-weather {
@@ -141,12 +141,18 @@ strong {
   margin-top: 20px;
 }
 
+.forecast-img {
+  width: 75px;
+  height: 75px;
+  margin-top: -9px;
+  margin-bottom: -6px;
+}
+
 .days {
-  margin: 5px 0;
+  margin: 5px 0px 0px 0px;
 }
 
 .degrees {
-  margin-top: 10px;
   font-weight: 200;
   font-size: 16px;
 }
